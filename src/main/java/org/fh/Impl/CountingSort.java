@@ -2,8 +2,22 @@ package org.fh.Impl;
 
 import org.fh.Interfaces.SortAlgorithm;
 
+/**
+ * Implementation of the Counting Sort algorithm.
+ * This class implements the SortAlgorithm interface and provides
+ * a sorting method based on the Counting Sort technique.
+ */
 public class CountingSort implements SortAlgorithm {
 
+    /**
+     * Sorts an array of integers using the Counting Sort algorithm.
+     * This method handles sorting an array in ascending order. It first
+     * finds the maximum value to determine the range of counting, then
+     * performs the sorting logic.
+     *
+     * @param array The array to be sorted.
+     * @return The sorted array.
+     */
     @Override
     public int[] sort(int[] array) {
 

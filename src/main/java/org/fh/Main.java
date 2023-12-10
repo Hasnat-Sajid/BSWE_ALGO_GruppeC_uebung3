@@ -4,6 +4,11 @@ import org.fh.Impl.CountingSort;
 import org.fh.Interfaces.SortAlgorithm;
 import org.fh.Util.FileReaderUtil;
 
+/**
+ * Main class for demonstrating the Counting Sort algorithm.
+ * This class reads an array of integers from a file, sorts them using
+ * the Counting Sort algorithm, and prints the sorted array.
+ */
 public class Main {
     public static void main(String[] args) {
         // pfad zur digits.txt Datei
