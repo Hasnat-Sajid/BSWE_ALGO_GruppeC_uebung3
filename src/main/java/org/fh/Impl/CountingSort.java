@@ -15,22 +15,22 @@ public class CountingSort implements SortAlgorithm {
      * finds the maximum value to determine the range of counting, then
      * performs the sorting logic.
      *
-     * @param array The array to be sorted.
+     * @param input The input array to be sorted.
      * @return The sorted array.
      */
     @Override
-    public int[] sort(int[] array) {
-
+    public int[] sort(int[] input) {
         // falls das array leer ist, return das array einfach
-        if (array == null || array.length == 0) {
-            return array;
+        if (input == null || input.length == 0) {
+            return input;
         }
+        int inputLength = input.length;
 
         // das Maximum finden um die Größe des Arrays zu bestimmen
-        int max = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] > max) {
-                max = array[i];
+        int max = input[0];
+        for (int i = 1; i < inputLength; i++) {
+            if (input[i] > max) {
+                max = input[i];
             }
         }
 
@@ -38,19 +38,23 @@ public class CountingSort implements SortAlgorithm {
         int[] countArray = new int[max + 1];
 
         // die Elemente zählen
-        for (int i : array) {
+        for (int i : input) {
             countArray[i]++;
         }
 
-        // die eigentliche sortier logik
-        int arrayIndex = 0;
-        for (int i = 0; i < countArray.length; i++) {
-            while (countArray[i] > 0) {
-                array[arrayIndex++] = i;
-                countArray[i]--;
-            }
+        //kumulative summe von den Elementen
+        for(int i = 1; i <= countArray.length-1; i++){
+            countArray[i] += countArray[i-1];
         }
 
-        return array;
+        int[] outputArray = new int[inputLength];
+
+        //vom ende weg iterieren, damit der Algorithmus stabil bleibt
+        for(int i = inputLength-1; i >= 0; i--){
+            outputArray[countArray[input[i]]-1] = input[i];
+            countArray[input[i]]--;
+        }
+
+        return outputArray;
     }
 }
